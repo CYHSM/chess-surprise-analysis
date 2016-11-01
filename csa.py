@@ -146,7 +146,7 @@ def evaluate_board(board, engine, depths=range(5, 20), verbose=0):
     return cp_per_depth, nodes_per_depth
 
 
-def analyse_evaluations(cp_df, low=6, high=11):
+def analyse_evaluations(cp_df, low=5, high=11):
     """
     Analyses evaluations and returns 'surprise' scores
 
