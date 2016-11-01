@@ -167,8 +167,7 @@ def evaluate_board_asynchrone(board, engine, max_depth=20, verbose=0):
     cp_per_depth = {}
     nodes_per_depth = {}
     current_depth = 1
-    max_depth += 1  # Increase max depth as last depth will not be fully
-    #  searched. Using command.done() would increase runtime.
+
     # Set board position
     engine.position(board)
     engine.go(depth=max_depth, async_callback=True)
@@ -182,13 +181,14 @@ def evaluate_board_asynchrone(board, engine, max_depth=20, verbose=0):
             # Make sure the evaluation is not dependent on the side to move
             if not board.turn:
                 centipawn_eval *= -1
-            cp_per_depth[current_depth] = centipawn_eval
-            nodes_per_depth[current_depth] = engine.info_handlers[
-                0].info["nodes"]
             if current_depth != engine.info_handlers[0].info["depth"]:
                 current_depth = engine.info_handlers[0].info["depth"]
                 if verbose:
                     print('%d,' % current_depth, end='')
+            # Save values
+            cp_per_depth[current_depth] = centipawn_eval
+            nodes_per_depth[current_depth] = engine.info_handlers[
+                0].info["nodes"]
     return cp_per_depth, nodes_per_depth
 
 
