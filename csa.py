@@ -45,27 +45,27 @@ def load_game_from_pgn(path_to_pgn):
     return chess_game
 
 
-def get_board_at_position(chess_game, position):
+def get_board_at_position(chess_game, halfmove_number):
     """
-    Given a chess game, returns the board at given position
+    Given a chess game, returns the board at given halfmove_number
     """
-    fullmove_number = chess_game.board().fullmove_number
-    while not chess_game.is_end() and fullmove_number - 1 < position:
+    halfmove_counter = 1
+    while not chess_game.is_end() and halfmove_counter - 1 < halfmove_number:
         board = chess_game.board()
         next_node = chess_game.variation(0)
         chess_game = next_node
-        fullmove_number = chess_game.board().fullmove_number
+        halfmove_counter += 1
     return board
 
 
-def evaluate_game(chess_game, move_numbers=None, bln_reset_engine=True,
-                  depths=range(5, 20), verbose=0):
+def evaluate_game(chess_game, halfmove_numbers=None, bln_reset_engine=True,
+                  depths=range(5, 20), verbose=0, async_callback=False):
     """
     Evaluate each move of the game
 
     Inputs:
     - chess_game : The game to analyse
-    - move_numbers : Specify the move numbers which should be analysed,
+    - halfmove_numbers : Specify the move numbers which should be analysed,
                     None analyses all
     - bln_reset_engine : Boolean if engine should be reset during moves,
                         otherwise will lead to different results due to hashing
@@ -88,8 +88,8 @@ def evaluate_game(chess_game, move_numbers=None, bln_reset_engine=True,
         board = chess_game.board()
         next_node = chess_game.variation(0)
         chess_game = next_node
-        if move_numbers is not None:
-            if halfmove_counter not in move_numbers:
+        if halfmove_numbers is not None:
+            if halfmove_counter not in halfmove_numbers:
                 halfmove_counter += 1
                 continue
         # Reset engine
@@ -97,9 +97,14 @@ def evaluate_game(chess_game, move_numbers=None, bln_reset_engine=True,
             engine = reset_engine(engine)
         # Evaluate board
         if verbose:
-            print('Evaluating half-move %d, Depth: ' % halfmove_counter, end='')
-        cp_per_depth, nodes_per_depth = evaluate_board(
-            board, engine, depths=depths, verbose=verbose)
+            print('Evaluating half-move %d, Depth: ' %
+                  halfmove_counter, end='')
+        if async_callback:
+            cp_per_depth, nodes_per_depth = evaluate_board_asynchrone(
+                board, engine, max_depth=np.max(depths), verbose=verbose)
+        else:
+            cp_per_depth, nodes_per_depth = evaluate_board(
+                board, engine, depths=depths, verbose=verbose)
         # Save Outputs
         cp_per_move[halfmove_counter] = cp_per_depth
         nodes_per_move[halfmove_counter] = nodes_per_depth
@@ -146,6 +151,47 @@ def evaluate_board(board, engine, depths=range(5, 20), verbose=0):
     return cp_per_depth, nodes_per_depth
 
 
+def evaluate_board_asynchrone(board, engine, max_depth=20, verbose=0):
+    """
+    Evaluates the current position on the board in an asynchrone way
+
+    Inputs:
+    - board: Contains all the information about the position of the pieces
+    - engine: Engine used to evaluate Position
+
+    Outputs:
+    - cp_per_depth: Centipawn Evaluation per depth used
+    - nodes_per_depth: How many nodes where evaluated at this depth
+    """
+    # Initialise Outputs
+    cp_per_depth = {}
+    nodes_per_depth = {}
+    current_depth = 1
+    max_depth += 1  # Increase max depth as last depth will not be fully
+    #  searched. Using command.done() would increase runtime.
+    # Set board position
+    engine.position(board)
+    engine.go(depth=max_depth, async_callback=True)
+    while current_depth != max_depth:
+        if 1 in engine.info_handlers[0].info["score"]:
+            centipawn_eval = engine.info_handlers[0].info[
+                "score"][1].cp  # Get evaluation from info_handler
+            # Catch problems with the evaluation
+            if centipawn_eval is None:
+                centipawn_eval = np.NaN
+            # Make sure the evaluation is not dependent on the side to move
+            if not board.turn:
+                centipawn_eval *= -1
+            cp_per_depth[current_depth] = centipawn_eval
+            nodes_per_depth[current_depth] = engine.info_handlers[
+                0].info["nodes"]
+            if current_depth != engine.info_handlers[0].info["depth"]:
+                current_depth = engine.info_handlers[0].info["depth"]
+                if verbose:
+                    print('%d,' % current_depth, end='')
+    return cp_per_depth, nodes_per_depth
+
+
 def analyse_evaluations(cp_df, low=5, high=11):
     """
     Analyses evaluations and returns 'surprise' scores
@@ -160,7 +206,7 @@ def analyse_evaluations(cp_df, low=5, high=11):
     - ss_df : Dataframe with surprise scores. Dimension: #Moves
     """
     low_mean = cp_df[low:high].mean()
-    high_mean = cp_df[high+1::].mean()
+    high_mean = cp_df[high + 1::].mean()
     ss_df = low_mean - high_mean
 
     return ss_df
