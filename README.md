@@ -1,3 +1,47 @@
-This project aims to develop an analysis of chess games with the goal to identify interesting Grandmaster games based on 'surprising moves'.
+## The -What The Hell- Moment
+
+When looking at specific chess games from grandmasters there sometimes comes a point in the game where a lot of people
+wonder about a horrible looking move (mostly a sacrifice of a high valued piece) and why it was played this way.
+
+Analysing these games with an engine (usually) reveals the genius behind these moves and the advantage this move offers, but from the engines perspective this move was not *surprising* at all.
+
+This repository implements a Surprise Analysis of Chess Games. The key concept is to compare the evaluations of a chess engine in low depths with the evaluation at high depths, with the idea that a low depth engine may represent a naive observer of the game. It uses the super-strong open-source engine [Stockfish](https://stockfishchess.org/) and the awesome [python-chess library](https://github.com/niklasf/python-chess).
+
+## Example Usage
+Start with a chess game. Most of them are available as .pgn files, so just specify the file to your specific chess game:
+```python
+# Load Game from PGN
+path_to_pgn = 'wei_yi_bruzon_batista_2015.pgn'
+chess_game = csa.load_game_from_pgn(path_to_pgn)
+```
+Then evaluate the game. With the halfmove_numbers parameter you can specify which moves should be evaluated and with the depths you control the depth of analysis.
+```python
+# Evaluate Game
+cp, nodes = csa.evaluate_game(chess_game, bln_reset_engine=True,
+                              halfmove_numbers=None, depths=range(1, 35),
+                              verbose=1, async_callback=True)
+```
+After evaluating all depths for all moves (this could take some time) find surprising moves:
+```python
+# Find surprising moves
+ss_df, infos = csa.analyse_evaluations(cp, low=12, high=22)
+```
+
+## Example
+
+I evaluated Garry Kasparovs immortal game against Veselin Topalov until depth 32. In this game Kasparov was trailing a bit and in this position:
+![Halfmove Number 47](media/kasparov_board_bf.png)
+Kasparov decided to go all in and play Rxd4, which is of course quite a natural move to play in this position. 
+
+Analysing this game
+
 
 ![Evaluation of Kasparov's Immortal](https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/kasparov_heatmap.svg  "Centipawn Evaluation per Move and Depth")
+
+
+
+## Limitations
+
+* Using a synchronous calculating approach for each depth will lead to continuous evaluations but with a worse run-time. It can also lead to a high variance in the evaluations at depths < 10.
+
+* Using an asynchronous approach where missing evaluations are filled with the values before and after makes the evaluation much faster. Also missing evaluations are unlikely at depths > 10.
