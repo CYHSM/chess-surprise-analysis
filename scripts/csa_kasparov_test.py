@@ -1,3 +1,4 @@
+#%%
 from python3.csa import csa
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,6 +28,7 @@ chess_game = csa.load_game_from_pgn(path_to_pgn)
 # board
 # engine = csa.load_engine()
 # cp = csa.evaluate_board(board, engine, depths=range(1, 11), verbose=1)
+
 
 cp, nodes = csa.evaluate_game(chess_game, bln_reset_engine=True, depths=range(1, 11), verbose=1)
 save_obj(cp, 'cp')

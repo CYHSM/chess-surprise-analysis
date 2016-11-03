@@ -192,7 +192,7 @@ def evaluate_board_asynchrone(board, engine, max_depth=20, verbose=0):
     return cp_per_depth, nodes_per_depth
 
 
-def analyse_evaluations(cp_df, low=5, high=11):
+def analyse_evaluations(cp_df, low=5, high=11, use_log=True):
     """
     Analyses evaluations and returns 'surprise' scores
 
@@ -207,6 +207,9 @@ def analyse_evaluations(cp_df, low=5, high=11):
     """
     low_mean = cp_df[low:high].mean()
     high_mean = cp_df[high + 1::].mean()
-    ss_df = low_mean - high_mean
+    if use_log:
+        ss_df = np.log(low_mean) - np.log(high_mean)
+    else:
+        ss_df = low_mean - high_mean
 
     return ss_df
