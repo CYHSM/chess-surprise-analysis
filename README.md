@@ -31,7 +31,7 @@ ss_df, infos = csa.analyse_evaluations(cp, low=12, high=22)
 
 I evaluated Garry Kasparovs immortal game against Veselin Topalov until depth 32. In this game Kasparov was trailing a bit and in this position:
 
-<center><img src="media/kasparov_board_bf.png" width="480"></center>
+<p align="center"><img src="media/kasparov_board_bf.png" width="480"></p>
 
 Kasparov decided to go all in and play Rxd4, which is of course quite a natural move to play in this position.
 
