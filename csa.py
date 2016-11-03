@@ -195,6 +195,7 @@ def evaluate_board_asynchrone(board, engine, max_depth=20, verbose=0):
             cp_per_depth[current_depth] = centipawn_eval
             nodes_per_depth[current_depth] = engine.info_handlers[
                 0].info["nodes"]
+    engine.stop()
     return cp_per_depth, nodes_per_depth
 
 
@@ -221,13 +222,13 @@ def analyse_evaluations(cp_df, low=5, high=11, end=None, use_log=True):
     if use_log:
         # Be aware of 0 division if using logarithmic identity : log(a/b) = log(a) - log(b)
         # Here we use masked numpy array to fix zero values
-        low_log = np.ma.log(low_mean.values).data
-        high_log = np.ma.log(high_mean.values).data
+        low_log = np.ma.log(np.abs(low_mean.values)).data * np.sign(low_mean.values)
+        high_log = np.ma.log(np.abs(high_mean.values)).data * np.sign(high_mean.values)
         ss_df = pd.DataFrame(low_log - high_log, index=cp_df.columns)
+        infos['low_log'] = low_log
+        infos['high_log'] = high_log
     else:
         ss_df = low_mean - high_mean
-    infos['low_log'] = low_log
-    infos['high_log'] = high_log
     infos['low_mean'] = low_mean
     infos['high_mean'] = high_mean
 
