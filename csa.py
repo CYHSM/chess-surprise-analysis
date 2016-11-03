@@ -210,7 +210,9 @@ def analyse_evaluations(cp_df, low=5, high=11, end=None, use_log=True):
 
     Outputs:
     - ss_df : Dataframe with surprise scores. Dimension: #Moves
+    - infos : Dict with additional parameters
     """
+    infos = {}
     low_mean = cp_df[low:high].mean()
     if end is not None:
         high_mean = cp_df[high + 1:end].mean()
@@ -224,5 +226,9 @@ def analyse_evaluations(cp_df, low=5, high=11, end=None, use_log=True):
         ss_df = pd.DataFrame(low_log - high_log, index=cp_df.columns)
     else:
         ss_df = low_mean - high_mean
+    infos['low_log'] = low_log
+    infos['high_log'] = high_log
+    infos['low_mean'] = low_mean
+    infos['high_mean'] = high_mean
 
-    return ss_df
+    return ss_df, infos
