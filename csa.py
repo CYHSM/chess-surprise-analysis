@@ -59,7 +59,8 @@ def get_board_at_position(chess_game, halfmove_number):
 
 
 def evaluate_game(chess_game, halfmove_numbers=None, bln_reset_engine=True,
-                  depths=range(5, 20), verbose=0, async_callback=False):
+                  depths=range(5, 20), verbose=0, async_callback=False,
+                  fillna=True):
     """
     Evaluate each move of the game
 
@@ -114,6 +115,11 @@ def evaluate_game(chess_game, halfmove_numbers=None, bln_reset_engine=True,
     # Return as dataframe
     cp_per_move = pd.DataFrame.from_dict(cp_per_move)
     nodes_per_move = pd.DataFrame.from_dict(cp_per_move)
+    # Fill Nan Values as asynchrone evaluation skips depths
+    if fillna:
+        cp_per_move = cp_per_move.fillna(method='pad').fillna(method='bfill')
+        nodes_per_move = nodes_per_move.fillna(method='pad').fillna(method='bfill')
+
     return cp_per_move, nodes_per_move
 
 
@@ -192,7 +198,7 @@ def evaluate_board_asynchrone(board, engine, max_depth=20, verbose=0):
     return cp_per_depth, nodes_per_depth
 
 
-def analyse_evaluations(cp_df, low=5, high=11, use_log=True):
+def analyse_evaluations(cp_df, low=5, high=11, end=None, use_log=True):
     """
     Analyses evaluations and returns 'surprise' scores
 
@@ -206,9 +212,16 @@ def analyse_evaluations(cp_df, low=5, high=11, use_log=True):
     - ss_df : Dataframe with surprise scores. Dimension: #Moves
     """
     low_mean = cp_df[low:high].mean()
-    high_mean = cp_df[high + 1::].mean()
+    if end is not None:
+        high_mean = cp_df[high + 1:end].mean()
+    else:
+        high_mean = cp_df[high + 1::].mean()
     if use_log:
-        ss_df = np.log(low_mean) - np.log(high_mean)
+        # Be aware of 0 division if using logarithmic identity : log(a/b) = log(a) - log(b)
+        # Here we use masked numpy array to fix zero values
+        low_log = np.ma.log(low_mean.values).data
+        high_log = np.ma.log(high_mean.values).data
+        ss_df = pd.DataFrame(low_log - high_log, index=cp_df.columns)
     else:
         ss_df = low_mean - high_mean
 

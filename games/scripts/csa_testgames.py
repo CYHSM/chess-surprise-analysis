@@ -38,15 +38,39 @@ print(elapsed)
 save_obj(cp, 'kasparov_cp')
 save_obj(nodes, 'kasparov_nodes')
 # #
-ss_df = csa.analyse_evaluations(cp, low=12, high=22)
-low = 12
-high = 22
-low_mean = np.array(cp[low:high].mean())
-high_mean = np.array(cp[high + 1::].mean())
-c = pd.DataFrame(np.ma.log(low_mean).data)
-d = pd.DataFrame(np.ma.log(high_mean).data)
-c
-ss_df = c-d
+cp2 = cp.copy()
+cp2[np.isnan(cp2)] = 0
+plt.pcolor(cp2)
+
+# In bokeh
+from bokeh.plotting import figure, show, output_notebook
+from bokeh.charts import HeatMap
+#output_notebook()
+import bokeh.palettes
+p = HeatMap(cp2,x='move',y='depth')
+# p = HeatMap(cp, title='csa', palette=bokeh.palettes.OrRd9)
+show(p)
+
+p2 = figure()
+p2.line(ss_df)
+show(p2)
+import seaborn as sns
+# sns.heatmap(cp_na.ix[:,46:48], cbar=False,
+#                 square=False,
+#                 annot=True,
+#                 cmap='Blues',
+#                 fmt='g',
+#                 linewidths=0.5)
+cp_na2 = cp_na.copy()
+cp_na2[np.abs(cp_na2)>200] = 200
+sns.heatmap(cp_na2)
+sns.violinplot(cp_na.ix[:,45:50])
+cp_na.ix[:,46:47]
+cp_na = cp.fillna(method='pad')
+cp_na = cp_na.fillna(method='bfill')
+cp_na
+
+ss_df = csa.analyse_evaluations(cp_na, low=12, high=22)
 plt.plot(ss_df)
 ss_df[abs(ss_df)>100]
 ss_df[40::]
@@ -56,9 +80,11 @@ cp2 = cp
 cp2[cp2>300] = 300
 cp2[cp2<-300] = -300
 cp2.ix[:,46::]
-ss_cp2 = csa.analyse_evaluations(cp2, low=12, high=20)
-plt.plot(ss_cp2)
+ss_cp2 = csa.analyse_evaluations(cp, low=12, high=20, end=30)
+plt.plot(ss_cp2.diff())
 # cp
+plt.plot(ss_cp2)
+ss_cp2[40::]
 #
 cp = load_obj('kasparov_cp')
 cp.ix[:,45::]
@@ -104,3 +130,55 @@ cp.ix[:,45::]
 # #plt.plot((44, 44), (-800, 600), 'k-')
 # plt.legend(['low', 'high'])
 # plt.show()
+import pandas as pd
+
+from bokeh.charts import HeatMap, bins, output_file, show
+from bokeh.layouts import column, gridplot
+from bokeh.palettes import RdYlGn6, RdYlGn9
+from bokeh.sampledata.autompg import autompg
+from bokeh.sampledata.unemployment1948 import data
+
+# setup data sources
+#del data['Annual']
+data['Year'] = data['Year'].astype(str)
+unempl = pd.melt(data, var_name='Month', value_name='Unemployment', id_vars=['Year'])
+
+hm10 = HeatMap(unempl, x='Year', y='Month', values='Unemployment', stat=None,
+              sort_dim={'x': False}, width=900, plot_height=500)
+
+output_file("heatmap.html", title="heatmap.py example")
+
+show(hm10)
+
+data
+cp2[2]
+cp2_melt = pd.melt(cp2, var_name='Moves', value_name='Evaluation', id_vars=[1:10])
+cp2
+cp4 = cp2.set_index(cp2[cp2.index[0]].astype(str))
+cp4
+cp3 = cp2.rename_axis('Depth')
+HeatMap(cp2.values)
+cp2
+
+from bokeh._legacy_charts import HeatMap, output_file, show
+
+xyvalues = np.random.random((28,1000))
+
+df = pd.DataFrame(xyvalues)
+
+output_file('heatmap.html')
+
+plt.pcolor(cp2)
+
+show(hm)
+
+import plotly.plotly as py
+import plotly.graph_objs as go
+from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+
+import pandas as pd
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/volcano.csv')
+
+data = [go.Heatmap( z=cp2.values.tolist(), colorscale='Viridis')]
+
+plot(data, filename='pandas-heatmap')
