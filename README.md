@@ -30,14 +30,14 @@ ss_df, infos = csa.analyse_evaluations(cp, low=12, high=22)
 ## Example
 
 I evaluated Garry Kasparovs immortal game against Veselin Topalov until depth 32. In this game Kasparov was trailing a bit and in this position:
-![Halfmove Number 47](media/kasparov_board_bf.png)
+
+<center><img src="media/kasparov_board_bf.png" width="480"></center>
+
 Kasparov decided to go all in and play Rxd4, which is of course quite a natural move to play in this position.
 
-Analysing this game
-
-
+Here is a heatmap showing the centipawn evaluation until depth 32. The y-axis has increasing depth values from bottom to top and the x-axis contains the halfmove numbers from left to right. Colors represent the truncated (at 100) evaluation in centipawns.
 ![Evaluation of Kasparov's Immortal](https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/kasparov_heatmap.svg  "Centipawn Evaluation per Move and Depth")
-
+Surprising moves are characterised as having a different evaluation for low depths vs. high depths (see blue parts down and red top, around move 48).
 
 
 ## Limitations
