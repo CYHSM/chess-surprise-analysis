@@ -2,13 +2,19 @@
 csa : Chess Surprise analysis
 author : Markus Frey
 e-mail : markus.frey1@gmail.com
+github : https://github.com/CYHSM/chess-surprise-analysis
 """
 import chess.pgn
 import chess.uci
 import numpy as np
 import pandas as pd
+import pickle
+import os
 
 
+###############################################################################
+#####################LOAD GAME AND BOARD#######################################
+###############################################################################
 def load_engine():
     """Load engine for analysing games"""
     # Use the open-soure engine Stockfish
@@ -58,7 +64,10 @@ def get_board_at_position(chess_game, halfmove_number):
     return board
 
 
-def evaluate_game(chess_game, halfmove_numbers=None, bln_reset_engine=True,
+###############################################################################
+#####################GAME EVALUATION###########################################
+###############################################################################
+def evaluate_game(chess_game, halfmove_numbers=None, reset_engine=True,
                   depths=range(5, 20), verbose=0, async_callback=False,
                   fillna=True):
     """
@@ -68,10 +77,11 @@ def evaluate_game(chess_game, halfmove_numbers=None, bln_reset_engine=True,
     - chess_game : The game to analyse
     - halfmove_numbers : Specify the move numbers which should be analysed,
                     None analyses all
-    - bln_reset_engine : Boolean if engine should be reset during moves,
+    - reset_engine : Boolean if engine should be reset during moves,
                         otherwise will lead to different results due to hashing
     - depths : Specify the depths which should be analysed
     - verbose : Specify if output should be printed (0,1)
+    - async_callback : Boolean if calculation should be performed asynchrone
 
     Outputs:
     - cp_per_move : Centipawn evaluation over all depths per move
@@ -94,7 +104,7 @@ def evaluate_game(chess_game, halfmove_numbers=None, bln_reset_engine=True,
                 halfmove_counter += 1
                 continue
         # Reset engine
-        if bln_reset_engine:
+        if reset_engine:
             engine = reset_engine(engine)
         # Evaluate board
         if verbose:
@@ -233,3 +243,64 @@ def analyse_evaluations(cp_df, low=5, high=11, end=None, use_log=True):
     infos['high_mean'] = high_mean
 
     return ss_df, infos
+
+
+###############################################################################
+#####################SAVE EVALUATIONS##########################################
+###############################################################################
+def save_evaluation(cp, nodes, depths, async_callback,
+                    reset_engine, name):
+    """
+    Saves the evaluations with other information in a file
+
+    Inputs:
+    - cp : Dataframe of evaluations in centipawns.
+            Dimensions: #Depths x #Moves
+    - nodes : Dataframe of how many nodes were evaluated at which depth
+    - depths : How far did the engine calculate
+    - reset_engine : Boolean if engine was reset during moves,
+                    otherwise will lead to different results due to hashing
+    - async_callback : Boolean if calculation should be performed asynchrone
+    - name : Specify as year_opponent1_opponent2
+    """
+    # Construct dict for saving
+    obj = {}
+    obj['cp'] = cp
+    obj['nodes'] = nodes
+    obj['depths'] = depths
+    obj['async_callback'] = async_callback
+    obj['reset_engine'] = reset_engine
+    # Save to file
+    base_dir = os.getcwd()+'/evaluations/'
+    with open(base_dir + name + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+
+
+def load_evaluation(name):
+    """
+    Load the evaluations with other informations from file
+
+    Inputs:
+    - name : Name of file, in format year_opponent1_opponent2
+
+    Outputs:
+    - cp : Dataframe of evaluations in centipawns.
+            Dimensions: #Depths x #Moves
+    - nodes : Dataframe of how many nodes were evaluated at which depth
+    - depths : How far did the engine calculate
+    - reset_engine : Boolean if engine was reset during moves,
+                    otherwise will lead to different results due to hashing
+    - async_callback : Boolean if calculation should be performed asynchrone
+    - name : Specify as year_opponent1_opponent2
+    """
+    # Load from file
+    base_dir = os.getcwd()+'/evaluations/'
+    with open(base_dir + name + '.pkl', 'rb') as f:
+        obj = pickle.load(f)
+    cp = obj['cp']
+    nodes = obj['nodes']
+    depths = obj['depths']
+    async_callback = obj['async_callback']
+    reset_engine = obj['reset_engine']
+    # Return
+    return cp, nodes, depths, async_callback, reset_engine

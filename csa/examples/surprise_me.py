@@ -8,7 +8,7 @@ path_to_pgn = 'wei_yi_bruzon_batista_2015.pgn'
 chess_game = csa.load_game_from_pgn(path_to_pgn)
 
 # Evaluate Game
-cp, nodes = csa.evaluate_game(chess_game, bln_reset_engine=True,
+cp, nodes = csa.evaluate_game(chess_game, reset_engine=True,
                               halfmove_numbers=None, depths=range(1, 35),
                               verbose=1, async_callback=True)
 
