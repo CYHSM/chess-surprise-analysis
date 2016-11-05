@@ -1,7 +1,7 @@
 """
 Example code for evaluating a game and finding surprising moves
 """
-import csa
+from csa import csa
 
 # Load Game from PGN
 path_to_pgn = 'wei_yi_bruzon_batista_2015.pgn'

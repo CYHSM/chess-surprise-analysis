@@ -28,7 +28,7 @@ def load_engine():
     return engine
 
 
-def reset_engine(engine):
+def reset_present_engine(engine):
     """Reset the engine to avoid usage of hashtables in evaluation.
 
     Problem: After first analysis a lot of possible moves are stored in
@@ -44,9 +44,11 @@ def reset_engine(engine):
 def load_game_from_pgn(path_to_pgn):
     """Read a chess game from PGN"""
     # Open PGN
-    pgn = open(path_to_pgn)
+    pgn_file = open(path_to_pgn)
     # Read game information
-    chess_game = chess.pgn.read_game(pgn)
+    chess_game = chess.pgn.read_game(pgn_file)
+    # Close
+    pgn_file.close()
 
     return chess_game
 
@@ -105,7 +107,7 @@ def evaluate_game(chess_game, halfmove_numbers=None, reset_engine=True,
                 continue
         # Reset engine
         if reset_engine:
-            engine = reset_engine(engine)
+            engine = reset_present_engine(engine)
         # Evaluate board
         if verbose:
             print('Evaluating half-move %d, Depth: ' %
@@ -271,7 +273,7 @@ def save_evaluation(cp, nodes, depths, async_callback,
     obj['async_callback'] = async_callback
     obj['reset_engine'] = reset_engine
     # Save to file
-    base_dir = os.getcwd()+'/evaluations/'
+    base_dir = os.path.dirname(__file__)+'/evaluations/'
     with open(base_dir + name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
@@ -294,7 +296,7 @@ def load_evaluation(name):
     - name : Specify as year_opponent1_opponent2
     """
     # Load from file
-    base_dir = os.getcwd()+'/evaluations/'
+    base_dir = os.path.dirname(__file__)+'/evaluations/'
     with open(base_dir + name + '.pkl', 'rb') as f:
         obj = pickle.load(f)
     cp = obj['cp']
