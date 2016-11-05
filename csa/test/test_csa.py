@@ -13,7 +13,7 @@ class TestCsa(unittest.TestCase):
         unittest.TestCase.setUp(self)
 
         # Load Game from PGN
-        base_dir = os.getcwd() + '/test_files/'
+        base_dir = os.path.dirname(__file__) + '/test_files/'
         path_to_pgn = base_dir + 'kasparov_topalov_1999.pgn'
         chess_game = csa.load_game_from_pgn(path_to_pgn)
 
