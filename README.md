@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/CYHSM/chess-surprise-analysis.svg?branch=master)](https://travis-ci.org/CYHSM/chess-surprise-analysis)
+
 ## The -What The Hell- Moment
 
 When looking at specific chess games from grandmasters there sometimes comes a point in the game where a lot of people
