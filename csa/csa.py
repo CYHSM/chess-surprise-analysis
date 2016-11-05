@@ -205,7 +205,7 @@ def evaluate_board_asynchrone(board, engine, max_depth=20, verbose=0):
                     print('%d,' % current_depth, end='')
             # Save values
             cp_per_depth[current_depth] = centipawn_eval
-            if engine.info_handlers[0].info["nodes"]:
+            if 'nodes' in engine.info_handlers[0].info:
                 nodes_per_depth[current_depth] = engine.info_handlers[
                     0].info["nodes"]
     engine.stop()
