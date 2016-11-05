@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/CYHSM/chess-surprise-analysis.svg?branch=master)](https://travis-ci.org/CYHSM/chess-surprise-analysis)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/CYHSM/chess-surprise-analysis/blob/master/LICENSE.md)
-[![py35 status](https://img.shields.io/badge/python3.5-supported-green.svg)]
+![py35 status](https://img.shields.io/badge/python3.5-supported-green.svg)
 
 ## The -What The Hell- Moment
 
