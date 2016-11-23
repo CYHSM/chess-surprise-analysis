@@ -39,15 +39,13 @@ I evaluated Garry Kasparovs immortal game against Veselin Topalov until depth 32
 
 Here is a heatmap showing the centipawn evaluation until depth 32. The y-axis has increasing depth values from bottom to top and the x-axis contains the halfmove numbers from left to right. Colors represent the truncated evaluation in centipawns. Surprising moves are characterised as having a different evaluation for low depths in relation to high depths (see blue parts down and red top, around move 48).
 
-<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/kasparov_topalov_1999_depth29.svg" width="1000"></p>
+<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/kasparov_topalov_1999_depth29_trunc100.svg" width="1000"></p>
 
 ## Example 2
 
 The game of Wei Yi playing against Bruzon Batista in 2015. See red parts top after move 41.
 
-<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/wei_yi_bruzon_batista_2015_cp_depth34.svg" width="1000"></p>
-
-<p align="center"><img src="https://github.com/CYHSM/chess-surprise-analysis/blob/master/media/kasparov_topalov_1999_depth29.svg" width="1000"></p>
+<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/wei_yi_bruzon_batista_2015_cp_depth34_trunc100.svg" width="1000"></p>
 
 ## Limitations
 
