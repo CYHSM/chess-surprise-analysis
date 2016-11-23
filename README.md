@@ -31,16 +31,21 @@ After evaluating all depths for all moves (this could take some time) find surpr
 ss_df, infos = csa.analyse_evaluations(cp, low=12, high=22)
 ```
 
-## Example
+## Example 1
 
 I evaluated Garry Kasparovs immortal game against Veselin Topalov until depth 32. In this game Kasparov was trailing a bit and in the following position Kasparov decided to go all in and play Rxd4, which is of course quite a natural move to play in this position.
 
 <p align="center"><img src="media/kasparov_board_bf.png" width="480"></p>
 
-Here is a heatmap showing the centipawn evaluation until depth 32. The y-axis has increasing depth values from bottom to top and the x-axis contains the halfmove numbers from left to right. Colors represent the truncated evaluation in centipawns. Surprising moves are characterised as having a different evaluation for low depths vs. high depths (see blue parts down and red top, around move 48).
+Here is a heatmap showing the centipawn evaluation until depth 32. The y-axis has increasing depth values from bottom to top and the x-axis contains the halfmove numbers from left to right. Colors represent the truncated evaluation in centipawns. Surprising moves are characterised as having a different evaluation for low depths in relation to high depths (see blue parts down and red top, around move 48).
 
-<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/kasparov_heatmap.svg" width="1000"></p>
+<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/kasparov_topalov_1999_depth29.svg" width="1000"></p>
 
+## Example 2
+
+The game of Wei Yi playing against Bruzon Batista in 2015.
+
+<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/wei_yi_bruzon_batista_2015_cp_depth34.svg" width="1000"></p>
 
 ## Limitations
 
