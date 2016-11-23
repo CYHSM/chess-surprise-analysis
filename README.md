@@ -43,7 +43,7 @@ Here is a heatmap showing the centipawn evaluation until depth 32. The y-axis ha
 
 ## Example 2
 
-The game of Wei Yi playing against Bruzon Batista in 2015.
+The game of Wei Yi playing against Bruzon Batista in 2015. See red parts top after move 41. 
 
 <p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/wei_yi_bruzon_batista_2015_cp_depth34.svg" width="1000"></p>
 
