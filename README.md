@@ -47,6 +47,8 @@ The game of Wei Yi playing against Bruzon Batista in 2015. See red parts top aft
 
 <p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/wei_yi_bruzon_batista_2015_cp_depth34.svg" width="1000"></p>
 
+<p align="center"><img src="https://github.com/CYHSM/chess-surprise-analysis/blob/master/media/kasparov_topalov_1999_depth29.svg" width="1000"></p>
+
 ## Limitations
 
 * Using a synchronous calculating approach for each depth will lead to continuous evaluations but with a worse run-time. It can also lead to a high variance in the evaluations at depths < 10.
