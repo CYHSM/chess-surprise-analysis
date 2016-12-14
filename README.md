@@ -7,7 +7,7 @@
 When looking at specific chess games from grandmasters there sometimes comes a point in the game where a lot of people
 wonder about a horrible looking move (mostly a sacrifice of a high valued piece) and why it was played this way.
 
-Analysing these games with an engine (usually) reveals the genius behind these moves and the advantage this move offers, but from the engines perspective this move was not *surprising* at all.
+Analysing these games with an engine (usually) reveals the genius behind these moves and the advantage this move offers, but from the engine's perspective this move was not *surprising* at all.
 
 This repository implements a Surprise Analysis of Chess Games. The key concept is to compare the evaluations of a chess engine in low depths with the evaluation at high depths, with the idea that a low depth engine may represent a naive observer of the game. It uses the super-strong open-source engine [Stockfish](https://stockfishchess.org/) and the awesome [python-chess library](https://github.com/niklasf/python-chess).
 
