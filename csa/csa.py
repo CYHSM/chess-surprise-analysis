@@ -43,12 +43,10 @@ def reset_present_engine(engine):
 
 def load_game_from_pgn(path_to_pgn):
     """Read a chess game from PGN"""
-    # Open PGN
-    pgn_file = open(path_to_pgn)
-    # Read game information
-    chess_game = chess.pgn.read_game(pgn_file)
-    # Close
-    pgn_file.close()
+    # Open and close PGN file
+    with open(path_to_pgn) as pgn_file:
+        # Read game information
+        chess_game = chess.pgn.read_game(pgn_file)
 
     return chess_game
 
