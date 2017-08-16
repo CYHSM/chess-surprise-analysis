@@ -15,12 +15,14 @@ import os
 ###############################################################################
 #####################LOAD GAME AND BOARD#######################################
 ###############################################################################
-def load_engine():
+def load_engine(engine_options=None):
     """Load engine for analysing games"""
     # Use the open-soure engine Stockfish
     engine = chess.uci.popen_engine('stockfish')
     # Important to use UCI (Universal Chess Interface)
     engine.uci()
+    if engine_options:
+        engine.setoption(engine_options)
     # Use an InfoHandler to save information about the analysis
     info_handler = chess.uci.InfoHandler()
     engine.info_handlers.append(info_handler)
@@ -28,7 +30,7 @@ def load_engine():
     return engine
 
 
-def reset_present_engine(engine):
+def reset_present_engine(engine, engine_options=None):
     """Reset the engine to avoid usage of hashtables in evaluation.
 
     Problem: After first analysis a lot of possible moves are stored in
@@ -37,7 +39,7 @@ def reset_present_engine(engine):
 
     """
     engine.quit()
-    engine = load_engine()
+    engine = load_engine(engine_options)
     return engine
 
 
@@ -71,7 +73,7 @@ def get_board_at_position(chess_game, halfmove_number):
 ###############################################################################
 def evaluate_game(chess_game, halfmove_numbers=None, reset_engine=True,
                   depths=range(5, 20), verbose=0, async_callback=False,
-                  fillna=True):
+                  fillna=True, engine_options=None):
     """
     Evaluate each move of the game
 
@@ -95,7 +97,7 @@ def evaluate_game(chess_game, halfmove_numbers=None, reset_engine=True,
     nodes_per_move = {}
     halfmove_counter = 1
     # Get engine
-    engine = load_engine()
+    engine = load_engine(engine_options)
     # Loop over all moves
     while not chess_game.is_end():
         board = chess_game.board()
@@ -107,7 +109,7 @@ def evaluate_game(chess_game, halfmove_numbers=None, reset_engine=True,
                 continue
         # Reset engine
         if reset_engine:
-            engine = reset_present_engine(engine)
+            engine = reset_present_engine(engine, engine_options=engine_options)
         # Evaluate board
         if verbose:
             print('Evaluating half-move %d, Depth: ' %
