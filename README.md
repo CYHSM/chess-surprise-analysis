@@ -7,7 +7,7 @@
 When looking at specific chess games from grandmasters there sometimes comes a point in the game where a lot of people
 wonder about a horrible looking move (mostly a sacrifice of a high valued piece) and why it was played this way.
 
-Analysing these games with an engine (usually) reveals the genius behind these moves and the advantage this move offers, but from the engines perspective this move was not *surprising* at all.
+Analysing these games with an engine (usually) reveals the genius behind these moves and the advantage this move offers, but from the engine's perspective this move was not *surprising* at all.
 
 This repository implements a Surprise Analysis of Chess Games. The key concept is to compare the evaluations of a chess engine in low depths with the evaluation at high depths, with the idea that a low depth engine may represent a naive observer of the game. It uses the super-strong open-source engine [Stockfish](https://stockfishchess.org/) and the awesome [python-chess library](https://github.com/niklasf/python-chess).
 
@@ -33,7 +33,7 @@ ss_df, infos = csa.analyse_evaluations(cp, low=12, high=22)
 
 ## Example 1
 
-I evaluated Garry Kasparovs immortal game against Veselin Topalov until depth 32. In this game Kasparov was trailing a bit and in the following position Kasparov decided to go all in and play Rxd4, which is of course quite a natural move to play in this position.
+I evaluated Garry Kasparov's immortal game against Veselin Topalov until depth 32. In this game Kasparov was trailing a bit and in the following position Kasparov decided to go all in and play Rxd4, which is of course quite a natural move to play in this position.
 
 <p align="center"><img src="media/kasparov_board_bf.png" width="480"></p>
 
