@@ -11,7 +11,7 @@ The world of chess changed considerably after the introduction of AlphaZero to c
 ### Game 10
 In game 10 there were probably a lot of surprising moves but one of the most daring moves was move 19 by white (AlphaZero). In this position it decided not to save its knight (Ng4) but to play Re1.
 
-<p align="center"><img src="media/alphago_board.png" width="480"></p>
+<p align="center"><img src="media/alphago_board_bf.png" width="480"></p>
 
 After analysing the game with this library we get this heatmap which shows us the evaluations of Stockfish 8 over each depth for each half-move.
 
@@ -20,7 +20,7 @@ After analysing the game with this library we get this heatmap which shows us th
 As one can see move 19 was also surprising to Stockfish (half-move number 38) where even for very high depths it still believed his position to be advantageous. The first time Stockfish actually saw a superior position of AlphaZero was at half-move 65.
 
 ### Other AlphaZero games
-I plan to add all the games which are available between these engines over the next weeks. Let me know if you have a strong preference for a game to be added. 
+I plan to add all the games which are available between these engines over the next weeks. Let me know if you have a strong preference for a game to be added.
 
 # ----------------------------------------------
 
