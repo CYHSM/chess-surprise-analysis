@@ -2,7 +2,30 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/CYHSM/chess-surprise-analysis/blob/master/LICENSE.md)
 ![py35 status](https://img.shields.io/badge/python3.5-supported-green.svg)
 
-## The -What The Hell- Moment
+# ----------------------------------------------
+
+# Update on Alpha Zero
+
+The world of chess changed considerably after the introduction of AlphaZero to chess. As described [here](https://arxiv.org/abs/1712.01815) the DeepMind engine won a competition against Stockfish 8 (28 wins - 72 draws - 0 losses). As this library was set out to discover surprising moves in chess games (see below for [describtion](#DescriptionHeader) and [examples](#Example1Header)), I wanted to see if a reanalysis on the games of AlphaZero with the same engine brought some inside into the thought process of [Stockfish 8](https://stockfishchess.org/).
+
+### Game 10
+In game 10 there were probably a lot of surprising moves but one of the most daring moves was move 19 by white (AlphaZero). In this position it decided not to save its knight (Ng4) but to play Re1.
+
+<p align="center"><img src="media/alphago_board.png" width="480"></p>
+
+After analysing the game with this library we get this heatmap which shows us the evaluations of Stockfish 8 over each depth for each half-move.
+
+<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_to36.svg" width="1000"></p>
+
+As one can see move 19 was also surprising to Stockfish (half-move number 38) where even for very high depths it still believed his position to be advantageous. The first time Stockfish actually saw a superior position of AlphaZero was at half-move 65.
+
+### Other AlphaZero games
+I plan to add all the games which are available between these engines over the next weeks. Let me know if you have a strong preference for a game to be added. 
+
+# ----------------------------------------------
+
+
+## <a name="DescriptionHeader"></a>The -What The Hell- Moment
 
 When looking at specific chess games from grandmasters there sometimes comes a point in the game where a lot of people
 wonder about a horrible looking move (mostly a sacrifice of a high valued piece) and why it was played this way.
@@ -31,7 +54,7 @@ After evaluating all depths for all moves (this could take some time) find surpr
 ss_df, infos = csa.analyse_evaluations(cp, low=12, high=22)
 ```
 
-## Example 1
+## <a name="Example1Header"></a>Example 1
 
 I evaluated Garry Kasparov's immortal game against Veselin Topalov until depth 32. In this game Kasparov was trailing a bit and in the following position Kasparov decided to go all in and play Rxd4, which is of course quite a natural move to play in this position.
 
