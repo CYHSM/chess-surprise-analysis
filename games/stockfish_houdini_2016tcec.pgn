@@ -1,0 +1,62 @@
+[Event "TCEC Season 9 - Superfinal"]
+[Site "http://tcec.chessdom.com"]
+[Date "2016.11.13"]
+[Round "9"]
+[White "Stockfish 8"]
+[Black "Houdini 5"]
+[Result "1-0"]
+[ECO "C13"]
+[WhiteElo "3228"]
+[BlackElo "3182"]
+[Annotator "Monokroussos,Dennis"]
+[PlyCount "94"]
+[EventDate "2016.11.11"]
+
+1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. Bg5 Be7 5. e5 Nfd7 6. h4 Bxg5 7. hxg5 Qxg5 8. Nh3 Qe7 9. Qg4 g6 10. O-O-O ( { In the rematch, Houdini played } 10. Ng5 { , and
+while it too was probably good for an edge the game was eventually drawn. } 10... h6 11. O-O-O Nc6 12. Nb5 { Almost a novelty. } 12... Nf8 $146 13. c4 a6 14. Nc3 { White's
+position seems more pleasant here, even taking the missing pawn into account. } 14... Bd7 15. Qg3 dxc4 16. d5 Qxg5+ 17. Qxg5 hxg5 18. Rxh8 Nxe5 19. Ne4 ( 19. Re1 f6 20. dxe6 Bxe6 21. Ne4 Ke7 22. Nxg5 fxg5 23. Rxe5 Kf6 24. Rc5 Nd7 25. Rxa8 Nxc5 26. Be2 { is the alternative, and may suffice for an edge. (Whether such an
+advantage can be converted into a win in a game between Stockfish and Houdini,
+or in a correspondence game, is an open question, but for those of us
+concerned with practical play over the board White's pull may be something to
+work with. } ) 19... g4 20. Nc5 ( 20. Re1 ) ( 20. Rg8 ) 20... O-O-O 21. dxe6 Nxe6 22. Nxd7 Nxd7 23. Rxd8+ Nxd8 24. Bxc4 { White has an advantage, but Black held. } 24... Ne5 25. Bb3 b5 26. Kd2 Kd7 27. Kc3+ Ke7 28. a4 c5 29. axb5 axb5 30. Bd5 Ne6 31. b4 cxb4+ 32. Kxb4 Nf4 33. Kxb5 Ned3 34. g3 Nxf2 35. Re1+ Ne6 36. Kc4 Nh3 37. Re4 Kd6 38. Rxg4 Nf2 39. Rh4 f5 40. Rh7 Ne4 41. g4 Ke5 42. Bxe4 fxe4 43. Re7 Kd6 44. Re8 g5 45. Kc3 Nc5 46. Kd4 Nd7 47. Rxe4 Nf6 48. Re5 Nxg4 { 1/2-1/2 (48)
+Houdini 5 (3182)-Stockfish 8 (3228) http://tcec.chessdom.com 2016 } ) 10... a6 ( { The slightly unaesthetic } 10... Nc6 { has been more common in human games. More
+importantly, it has been more successful. After } 11. Ng5 h6 12. Nb5 Nf8 13. c4 { the position has transposed to the Houdini-Stockfish game given in the
+previous note. } ) 11. Ng5 c5 ( 11... h5 { has also been played here, and is the
+move Stockfish prefers for Black, at least initially. } ) 12. dxc5 $146 ( 12. Nxh7 ) ( { and } 12. Qf4 { are important alternatives. } ) 12... Nxe5 13. Qh4 $14 Nbc6 14. f4 Nd7 { Now what? Black looks solid, and is about to add a second extra pawn
+to his collection. } 15. Rxd5 $3 ( 15. Nxd5 { is also possible: } 15... exd5 16. Re1 Nde5 17. Nxh7 ( 17. fxe5 Be6 18. Nxh7 Kd7 $11 ) 17... Qxh4 18. Rxh4 Ke7 19. fxe5 Be6 20. a3 a5 21. g3 { might be very slightly in White's favor. } ) 15... Nxc5 ( 15... exd5 $6 { is easy enough for the engines to calculate, but for humans the
+variations are brilliant: } 16. Nxd5 Qd8 17. Bc4 Nxc5 18. Qf2 $3 Qa5 ( 18... Ne6 { is objectively worse, but requires a series of fantastic moves by White to
+prove the advantage. } 19. Nxh7 f5 20. g4 $1 b5 21. gxf5 $1 gxf5 22. Ndf6+ Ke7 23. Bxe6 $1 Bxe6 24. Rd1 $1 Rxh7 $8 25. Nxh7 $1 Bd5 26. Qc5+ Qd6 27. Rxd5 Qxc5 28. Rxc5 Nd4 29. Re5+ $1 Kf7 30. c3 Rc8 31. Ng5+ Kg6 32. Kd2 Nc6 33. Re6+ Kh5 34. Nf7 Rc7 35. Nh6 $18 { White wins a second pawn, and inevitably the game. } ) 19. Nxh7 Rxh7 20. Rxh7 Be6 21. Rh8+ Kd7 22. Rxa8 Ne4 23. Nb6+ $1 Kc7 24. Qe3 Qxb6 25. Qxe4 Qg1+ 26. Kd2 Bxc4 27. Qxc4 Qxg2+ 28. Qe2 Qd5+ 29. Kc1 Qxa2 30. Rf8 $16 ) 16. Rxc5 $1 Qxc5 17. Nxh7 Qe7 18. Nf6+ Qxf6 19. Qxh8+ Qxh8 20. Rxh8+ Ke7 21. Bd3 $14 { /+/- After all that, an ending with equal material arises.
+White has a bit more space and an initiative thanks to its lead in development,
+but it's not yet clearly enough to win. So now we're treated to a technical
+master class complementing the tactical show we've just seen. } 21... Nd8 { Blocking
+the 8th rank so the bishop and rook can develop. } 22. Rh7 Kf8 23. Ne4 Bd7 24. g4 { Intending if necessary to play Nf6 and g5, cementing a huge space
+advantage on the kingside. This also prevents Black from using his (its) pawn
+majority, so only White will be able to create a passed pawn later on. } 24... Bb5 25. c4 Bc6 26. Kd2 { Bringing the last piece into play. Don't forget that one of
+the typical marks of an ending is the ability to use the piece as part of the
+army, and not to keep his majesty hidden away. } ( 26. Nf6 { is also strong. } ) 26... Bxe4 { Clearing the way for further development, but the bishop vs.
+knight imbalance just transforms White's advantage from one sort to another. } ( 26... Ke7 ) 27. Bxe4 Kg8 28. Rh1 f5 { Grabbing space and potentially making it
+easier for Black to eventually create a kingside passer. } 29. gxf5 gxf5 30. Bf3 Rc8 31. Kc3 Rc7 ( 31... b5 32. b3 { only helps White create a passed pawn. } ) 32. b4 Kg7 33. c5 Re7 ( 33... Nf7 { is an another way to try to achieve ...e5,
+leaving the rook on c7 where it holds up White's queenside advance. Against
+this White's best is } 34. Bh5 { , stopping } 34... e5 { due to } 35. Bxf7 Rxf7 ( 35... Kxf7 $4 { is much better except for one big thing: } 36. Rh7+ $18 ) 36. fxe5 { and White's e-pawn is a very meaningful asset - Black is now totally lost. One
+quick line to demonstrate: } 36... f4 37. Kd4 $5 ( 37. Kd3 f3 38. Ke3 Rf5 39. Ke4 Rf8 40. Rf1 f2 41. e6 Kg6 42. Ke5 { is simpler, but the main line is instructive in
+its own right. } ) 37... f3 38. e6 $5 ( 38. Ke3 ) ( 38. Rf1 ) 38... Rf5 39. Ke4 Kf6 40. Rh6+ Kg7 41. e7 $1 ( 41. Kxf5 $1 Kxh6 42. e7 f2 43. e8=Q f1=Q+ 44. Ke6 Qe1+ 45. Kd7 $1 Qxb4 46. Qe3+ Kg6 47. Kc7 $18 { is similar. } ) 41... f2 ( 41... Kxh6 42. e8=Q f2 43. Qe6+ $18 ) 42. e8=Q Rf4+ ( 42... f1=Q 43. Rg6+ Kh7 44. Qg8# ) 43. Kxf4 f1=Q+ 44. Kg5 Qg2+ 45. Kf5 Qf3+ 46. Ke6 Kxh6 47. Kd6 { and while queen
+endings are sometimes extraordinarily difficult to win, this one will be a
+snap. The only critical looking line is } 47... Qf4+ 48. Qe5 Qxb4 49. Kc7 a5 50. Qf6+ Kh5 51. Qb6 { when White wins: the b-pawn will fall, the c-pawn will advance,
+and Black has no serious shot at a perpetual, thanks in part to the
+interference on the a-file caused by his own pawn. } ) 34. Rg1+ Kf8 35. Rd1 Nf7 36. Bh5 Kg7 ( 36... e5 37. Rd5 $1 Kg7 ( 37... exf4 38. Rxf5 Kg7 39. Rxf4 $18 ) 38. Bxf7 Kxf7 39. fxe5 f4 40. Rd4 Rxe5 41. Rxf4+ Ke6 42. Rd4 $1 { This is a
+critical resource, preventing Black's king from joining his pawns. If the king
+could reach c7, the resulting ending would be drawn (provided of course that
+the rooks are still on the board; the king and pawn ending would be dead won
+for White). } ) 37. Rg1+ Kf8 38. a4 e5 { Black finally plays his last trump. } 39. Rg6 $1 exf4 { Black is momentarily a pawn ahead, but both f-pawns will
+disappear shortly, reversing the material count. } 40. Rf6 Kg7 41. Rxf5 Ne5 42. Rxf4 { It is possible that here too, Black could save the game if the king
+could "teleport" to c7, though perhaps it wouldn't be so simple after White
+played b4-b5. Here, however, Black has no chance. } 42... Rd7 43. Rd4 Rc7 ( 43... Rxd4 44. Kxd4 Kf6 45. b5 axb5 46. axb5 Ke6 47. Be2 $1 { Black's problem is that he's
+stuck. The king must keep the knight protected, and the knight must stay put
+because of Bf3, winning the b-pawn. } 47... Kf6 48. Bd1 $1 Ke6 49. Bb3+ Kf6 50. Bd5 $18 { and that's that. } ) 44. Rd6 $1 Kf8 45. Re6 Re7 { Now Black's king is close
+enough in case the rooks are exchanged, but White still has one move to win. } 46. Rf6+ $1 { Driving the king away. } 46... Kg8 47. Rf5 Kg7 { Here the game was
+adjudicated in White's favor. It may not seem obviously won, and humans would
+and should keep playing against each other. It is easy to determine, however,
+that White wins by force and without much trouble. } ( 47... Kg7 48. b5 axb5 49. axb5 Nd7 50. Kd4 Nf8 51. Bf3 Ne6+ 52. Ke5 Nf8+ ( 52... Nxc5+ 53. Kd6 $18 ) 53. Kd5 Rd7+ 54. Kc4 Re7 55. b6 { and now the nicest and most logical line is } 55... Rd7 56. Rxf8 $1 Kxf8 57. Bxb7 $1 Rxb7 58. Kb5 { White wins by one tempo, but that's
+enough. } 58... Ke8 59. c6 Rb8 60. c7 Rc8 61. Kc6 $1 $18 { followed by b7, not even
+allowing Black to struggle on in queen vs. rook. (Not that it's a struggle for
+an engine, but only for a human.) } ) 1-0
