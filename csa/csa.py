@@ -10,6 +10,8 @@ import numpy as np
 import pandas as pd
 import pickle
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 ###############################################################################
@@ -277,6 +279,20 @@ def save_evaluation(cp, nodes, depths, async_callback,
     base_dir = os.path.dirname(__file__)+'/evaluations/'
     with open(base_dir + name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+
+def plot_cp(cp, fn='test.svg', save=True, low=12):
+    # Truncate values
+    cp_trunc = cp.copy()
+    cp_trunc[np.abs(cp_trunc) > 100] = 100 * np.sign(cp_trunc)
+    fig, ax = plt.subplots(figsize=(8,3))
+    sns_plot = sns.heatmap(np.flipud(cp_trunc.ix[low::,:]), ax=ax, linecolor="black", linewidths=0.1, cmap="RdBu_r")
+    #sns_plot = sns.heatmap(np.flipud(cp_trunc), ax=ax, linecolor="black", linewidths=0.1, cmap="RdBu_r")
+    xtick_vec = np.arange(1, cp.shape[1], step=5)
+    sns_plot.set(xticks=xtick_vec, xticklabels=xtick_vec, yticklabels=[], ylabel='Depth', xlabel='Half-Move Number')
+    fig.subplots_adjust(bottom=0.20)
+    #sns_plot.set()
+    if save:
+        sns_plot.figure.savefig('./media/'+fn, transparent=True)
 
 
 def load_evaluation(name):
