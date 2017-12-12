@@ -1,3 +1,4 @@
 numpy>=1.11.1
 pandas>=0.19.0
 python-chess>=0.15.3
+matplotlib>=2.1.0
