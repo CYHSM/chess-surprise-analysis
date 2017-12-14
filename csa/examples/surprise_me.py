@@ -8,7 +8,7 @@ path_to_pgn = './games/alphazero-vs-stockfish_game10.pgn'
 chess_game = csa.load_game_from_pgn(path_to_pgn)
 
 # Evaluate Game
-depths = range(1, 37)
+depths = range(1, 41)
 cp, nodes = csa.evaluate_game(chess_game, reset_engine=True,
                               halfmove_numbers=None, depths=depths,
                               verbose=1, async_callback=True)

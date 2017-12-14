@@ -21,9 +21,9 @@ As one can see move 19 was also surprising to Stockfish (half-move number 38) wh
 
 Another comment was about the version of Stockfish used, so I reran the analysis on the newest Stockfish build, downloaded from [here](http://abrok.eu/stockfish/).
 
-<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_111217.svg" width="1000"></p>
+<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_111217_to40.svg" width="1000"></p>
 
-There are some differences but this still suggests that around move 18,19 (half-move 36,37,38) the newest version of Stockfish still thought himself to be better. 
+There are some differences but this still suggests that around move 18,19 (half-move 36,37,38) the newest version of Stockfish still thought himself to be better.
 
 ### Other AlphaZero games
 I plan to add all the games which are available between these engines over the next weeks. Let me know if you have a strong preference for a game to be added.
