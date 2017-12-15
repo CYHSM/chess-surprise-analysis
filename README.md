@@ -51,9 +51,9 @@ cp, nodes = csa.evaluate_game(chess_game, bln_reset_engine=True,
                               verbose=1, async_callback=True)
 # Save cp
 csa.save_evaluation(cp, nodes, depths, True,
-                    True, 'alphazero_stockfish-111217')
+                    True, 'wei_yi_bruzon_batista_2015')
 # Plot heatmap
-csa.plot_cp(cp, fn='alphazero_stockfish-111217.svg', save=True)
+csa.plot_cp(cp, fn='wei_yi_bruzon_batista_2015.svg', save=True)
 
 # Find surprising moves
 ss_df, infos = csa.analyse_evaluations(cp, low=12, high=22)
