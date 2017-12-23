@@ -25,6 +25,11 @@ Another comment was about the version of Stockfish used, so I reran the analysis
 
 There are some differences but this still suggests that around move 18,19 (half-move 36,37,38) the newest version of Stockfish still thought himself to be better.
 
+### Game 1
+
+<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_stockfish_game1.svg" width="1000"></p>
+
+
 ### Other AlphaZero games
 I plan to add all the games which are available between these engines over the next weeks. Let me know if you have a strong preference for a game to be added.
 
