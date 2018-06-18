@@ -46,12 +46,9 @@ One of the more interesting games. A very daring move by AlphaZero (White) at mo
 
 <p align="center"><img src="alphago_board_bf.png" width="480"></p>
 
-After analysing the game with this library we get this heatmap which shows us the evaluations of Stockfish 8 over each depth for each half-move:
-
 As one can see move 19 was also "surprising" to Stockfish (half-move number 38) where even for very high depths it still believed his position to be advantageous. The first time Stockfish actually saw a superior position of AlphaZero was at half-move 67.
 
 For comparison, below is the original analysis with Stockfish 8: 
 
 <p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_to36.svg" width="1000"></p>
 
-# ----------------------------------------------

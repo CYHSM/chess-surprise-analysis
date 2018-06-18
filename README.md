@@ -2,11 +2,9 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/CYHSM/chess-surprise-analysis/blob/master/LICENSE.md)
 ![py35 status](https://img.shields.io/badge/python3.5-supported-green.svg)
 
-# ----------------------------------------------
-
 # Update on Alpha Zero
 
-All reanalysis of the Alpha Zero vs. Stockfish games can now be found [here](https://github.com/CYHSM/chess-surprise-analysis/media/alphazero)
+All reanalysis of the Alpha Zero vs. Stockfish games can now be found [here](https://github.com/CYHSM/chess-surprise-analysis/tree/master/media/alphazero)
 
 ## <a name="DescriptionHeader"></a>The -What The Hell- Moment
 
