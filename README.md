@@ -6,35 +6,7 @@
 
 # Update on Alpha Zero
 
-The world of chess changed considerably after the introduction of AlphaZero to chess. As described [here](https://arxiv.org/abs/1712.01815) the DeepMind engine won a competition against Stockfish 8 (28 wins - 72 draws - 0 losses). As this library was set out to discover surprising moves in chess games (see below for [describtion](#DescriptionHeader) and [examples](#Example1Header)), I wanted to see if a reanalysis on the games of AlphaZero with the same engine brought some inside into the thought process of [Stockfish 8](https://stockfishchess.org/).
-
-### Game 10
-In game 10 there were probably a lot of surprising moves but one of the most daring moves was move 19 by white (AlphaZero). In this position it decided not to save its knight (Ng4) but to play Re1.
-
-<p align="center"><img src="media/alphago_board_bf.png" width="480"></p>
-
-After analysing the game with this library we get this heatmap which shows us the evaluations of Stockfish 8 over each depth for each half-move.
-
-<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_to36.svg" width="1000"></p>
-
-As one can see move 19 was also surprising to Stockfish (half-move number 38) where even for very high depths it still believed his position to be advantageous. The first time Stockfish actually saw a superior position of AlphaZero was at half-move 65.
-
-Another comment was about the version of Stockfish used, so I reran the analysis on the newest Stockfish build, downloaded from [here](http://abrok.eu/stockfish/).
-
-<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_111217_to40.svg" width="1000"></p>
-
-There are some differences but this still suggests that around move 18,19 (half-move 36,37,38) the newest version of Stockfish still thought himself to be better.
-
-### Game 1
-
-<p align="center"><img src="https://cdn.rawgit.com/CYHSM/chess-surprise-analysis/master/media/alphazero_stockfish_game1.svg" width="1000"></p>
-
-
-### Other AlphaZero games
-I plan to add all the games which are available between these engines over the next weeks. Let me know if you have a strong preference for a game to be added.
-
-# ----------------------------------------------
-
+All reanalysis of the Alpha Zero vs. Stockfish games can now be found [here](https://github.com/CYHSM/chess-surprise-analysis/media/alphazero)
 
 ## <a name="DescriptionHeader"></a>The -What The Hell- Moment
 
@@ -43,7 +15,7 @@ wonder about a horrible looking move (mostly a sacrifice of a high valued piece)
 
 Analysing these games with an engine (usually) reveals the genius behind these moves and the advantage this move offers, but from the engine's perspective this move was not *surprising* at all.
 
-This repository implements a Surprise Analysis of Chess Games. The key concept is to compare the evaluations of a chess engine in low depths with the evaluation at high depths, with the idea that a low depth engine may represent a naive observer of the game. It uses the super-strong open-source engine [Stockfish](https://stockfishchess.org/) and the awesome [python-chess library](https://github.com/niklasf/python-chess).
+This repository implements a Surprise Analysis of Chess Games. The key concept is to compare the evaluations of a chess engine in low depths with the evaluation at high depths, with the idea that a low depth engine may represent a naive observer of the game. It uses the open-source engine [Stockfish](https://stockfishchess.org/) in combination with the [python-chess library](https://github.com/niklasf/python-chess).
 
 ## Example Usage
 ```python
