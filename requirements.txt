@@ -1,5 +1,5 @@
 numpy>=1.11.1
 pandas>=0.19.0
-python-chess>=0.15.3
+python-chess==0.25.1
 matplotlib>=2.1.0
 seaborn>=0.8.1
