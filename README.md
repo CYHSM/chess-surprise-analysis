@@ -2,6 +2,10 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/CYHSM/chess-surprise-analysis/blob/master/LICENSE.md)
 ![py35 status](https://img.shields.io/badge/python3.5-supported-green.svg)
 
+# Update on Lichess bullet marathon
+
+Unrelated to surprising moves, but related to chess evaluations: [Magnus Carlsen vs. Alireza Firouzja](https://github.com/CYHSM/chess-surprise-analysis/blob/master/csa/examples/alireza_carlsen/alireza_carlsen.md)
+
 # Update on Alpha Zero
 
 All reanalysis of the Alpha Zero vs. Stockfish games can now be found [here](https://github.com/CYHSM/chess-surprise-analysis/tree/master/media/alphazero)
